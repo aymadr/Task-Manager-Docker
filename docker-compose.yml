@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # --- Service Base de Données (MongoDB) ---
+  mongo:
+    image: mongo:latest
+    container_name: my-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db # Persistance 
+    networks:
+      - app-network # Réseau sécurisé 
+
+  # --- Service Backend (API) ---
+  backend:
+    # 👇 AJOUTE CETTE LIGNE (C'est l'étiquette pour Docker Hub)
+    image: aymadr/projet-backend:v1 
+    build: ./backend # Construction locale 
+    container_name: my-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  # --- Service Frontend (React) ---
+  frontend:
+    
+    image: aymadr/projet-frontend:v1
+    build: ./frontend # Construction locale 
+    container_name: my-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - app-network
+
+# --- Volumes et Réseaux ---
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
