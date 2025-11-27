@@ -10,7 +10,7 @@ L'architecture est conteneurisée et orchestrée via `docker-compose`.
 **Livrables**
 
 - **Docker Hub (Images)** : https://hub.docker.com/u/aymadr
-- **Dépôt Git** : *(ajoutez votre lien Git ici)*
+- **Dépôt Git** : https://github.com/aymadr/Task-Manager-Docker
 
 ---
 
@@ -25,7 +25,7 @@ L'architecture est conteneurisée et orchestrée via `docker-compose`.
 1. Clonez le projet et placez-vous dans le dossier :
 
 ```bash
-git clone <votre-lien-git>
+git clone https://github.com/aymadr/Task-Manager-Docker
 cd Partiel
 ```
 
@@ -158,15 +158,4 @@ docker-compose logs backend
 
 ---
 
-## ✍️ Contribution
 
-- Ajoutez votre lien GitHub dans la section "Dépôt Git" ci-dessus.
-- Ouvrez une issue ou une pull request pour toute amélioration.
-
----
-
-Si vous souhaitez, je peux :
-
-- vérifier que le `docker-compose.yml` correspond à cette documentation,
-- ajouter des exemples d'environnement (`.env.example`), ou
-- générer des scripts d'initialisation pour la base.
